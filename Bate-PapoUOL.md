@@ -5,3 +5,4 @@ Oi Hugo :) - Gabi
 Oiiiiiiii :) - Luana
 To com fome :( = Luana
 Me da comida ? - Luana
+Não - Gabi
