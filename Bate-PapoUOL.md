@@ -10,3 +10,4 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 Esperando Hugo mandar exemplo de interface :) pq eu to perdida :) - Luana 
 Desce desce desce desce desce e rebola, sobe sobe sobe empina de costas, esse é o aquecimento da Tainá Costa - Gabi
 Biuriful Geeelll, dance comigo na pista, balada, balada - Gabi
+Ei gata, lembra de colocar this.arrayDragon = arrayDragonBigger no final de inserir do repositorio de array. Dois beijos sua linda - Gabi
