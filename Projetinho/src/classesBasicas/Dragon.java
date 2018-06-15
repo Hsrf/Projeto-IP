@@ -25,9 +25,5 @@ public class Dragon {
                                                                                                                        
     public void train(int value) {                                                                                    
         this.strength += value;                                                                                        
-    }  
-    
-    public void setName(String name) {
-    	this.name = name;
-    }
+    }                                                                                                                  
 }

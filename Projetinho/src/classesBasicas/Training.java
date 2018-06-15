@@ -1,10 +1,13 @@
 package classesBasicas;
 public class Training extends Activity{
- 
+	
+	
     public Training(String place, Dragon dragon) {
         super(place);
-       
     }
+    
+    
+  
  
     public void crossFit(Dragon dragon) {
         int value = (int)(Math.random() * 2);

@@ -2,13 +2,13 @@ package classesBasicas;
 
 public class Competition extends Activity{
     private Dragon[] arrayDragon = new Dragon[10];
-   
- 
+    
     public Competition(String place) {
         super(place);
     }           
    
     
+  
     public void addDragon(Dragon dragon) { 
     	boolean added = false;
     	if(!checkDragon(dragon)) {
@@ -19,7 +19,7 @@ public class Competition extends Activity{
     			}
     		}
     	}else {
-    		throw // criar a excecao para dragao ja na competicao
+    		// criar a excecao para dragao ja na competicao
     	}
     }
     
