@@ -13,33 +13,33 @@ public class RepositoryListTribe implements RepositoryTribe {
         this.next = null; 
     }
 
-    public void inserir (Tribe t) {
+    public void inserir (Tribe tribo) {
         if (this.tribo == null) {
-            this.tribo = t;
+            this.tribo = tribo;
             this.next = new RepositoryListTribe();
         } else {
-            this.next.inserir(t);
+            this.next.inserir(tribo);
         }
     }
 
-    public Tribe procurar (String n) {
-        if (n.equals(this.tribo.getTribe())) {
+    public Tribe procurar (String name) {
+        if (name.equals(this.tribo.getTribe())) {
             return this.tribo;
         } else {
-            return this.next.procurar(n);
+            return this.next.procurar(name);
         }
     }
 
-    public void remover (Tribe t) {
-        if (this.tribo == t) {
+    public void remover (Tribe tribo) {
+        if (this.tribo.getName().equals(tribo.getTribe())) {
             this.tribo = this.next.tribo;
             this.next = this.next.next;
         } else {
-            this.next.remover(t);
+            this.next.remover(tribo);
         }
     }
 
-    public void atualizarLider (Viking l) {
-        this.tribo.setLeader(l);
+    public void atualizarLider (Viking lider) {
+        this.tribo.setLeader(lider);
     }
 }

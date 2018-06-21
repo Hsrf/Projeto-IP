@@ -49,7 +49,7 @@ public class RepositoryArrayActivity implements RepositoryActivity{
 	@Override
 	public void update(Activity activity, String place) {
 		boolean updated = false;
-		for(int i = 0; i < array.length && updated == false;i ++) {
+		for(int i = 0; i < array.length && updated == false; i++) {
 			if(this.array[i].getId() == activity.getId()) {
 				this.array[i].setPlace(place);
 				updated = true;
@@ -69,6 +69,4 @@ public class RepositoryArrayActivity implements RepositoryActivity{
 		}
 		return null;
 	}
-
-
 }
