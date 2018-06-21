@@ -33,7 +33,7 @@ public class RepositoryArrayActivity implements RepositoryActivity{
 		for(int i = 0; i < array.length; i++) {
 			if(array[i].getId() == activity.getId()) {
 				for(int j = i; j < array.length - 1; j++) {
-					array[j] = array[j + 1];	
+					array[j] = array[j + 1];
 				}
 			}
 		}
