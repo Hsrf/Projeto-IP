@@ -55,7 +55,7 @@ public class RepositoryArrayTribe implements RepositoryTribe {
         throw new TriboNaoEncontradaException(name);
     }
 
-    public void atualizarLider(Viking lider) throws MesmoLiderException{
-        this.setLeader(lider);
+    public void atualizarLider(Tribe tribo, Viking lider) throws MesmoLiderException{
+        procurar(tribo.getTribe()).setLeader(lider);
     }
 }

@@ -3,8 +3,8 @@ import classesBasicas.Tribe;
 import excecoes.*;
 
 public interface RepositoryTribe {
-	public void inserir(Tribe t);
-	public Tribe procurar(String n) throws TriboNaoEncontradaException;
-	public void atualizarLider(Viking l) throws MesmoLiderException;
-	public void remover(Tribe t) throws TriboNaoEncontradaException;
+	public void inserir(Tribe tribo);
+	public Tribe procurar(String nome) throws TriboNaoEncontradaException;
+	public void atualizarLider(Tribe tribo, Viking lider) throws MesmoLiderException;
+	public void remover(Tribe tribo) throws TriboNaoEncontradaException;
 }

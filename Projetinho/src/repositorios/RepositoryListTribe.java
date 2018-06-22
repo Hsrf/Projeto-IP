@@ -48,7 +48,7 @@ public class RepositoryListTribe implements RepositoryTribe {
         }
     }
 
-    public void atualizarLider (Viking lider) throws MesmoLiderException{
+    public void atualizarLider (Tribe tribo, Viking lider) throws MesmoLiderException{
         this.tribo.setLeader(lider);
     }
 }
