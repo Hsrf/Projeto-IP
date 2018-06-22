@@ -1,9 +1,8 @@
 package repositorios;
 
 import classesBasicas.Tribe;
-import excecoes.TriboNaoEncontradaException;
-import interfaces.RepositoryTribe;
 import excecoes.*;
+import interfaces.RepositoryTribe;
 
 public class RepositoryListTribe implements RepositoryTribe {
 

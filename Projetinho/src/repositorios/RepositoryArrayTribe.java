@@ -1,6 +1,7 @@
 package repositorios;
 
 import classesBasicas.Tribe;
+import excecoes.*;
 import interfaces.RepositoryTribe;
 
 public class RepositoryArrayTribe implements RepositoryTribe {
@@ -21,11 +22,13 @@ public class RepositoryArrayTribe implements RepositoryTribe {
         this.arrei = biggerTribe;
     }
 
-    public void remover(Tribe tribo) {
+    public void remover(Tribe tribo) throws TriboNaoEcontradaException{
         Tribe[] smallerTribe = new Tribe[this.arrei.length - 1];
+        boolean removed = false;
 
-        for (int i = 0; i < smallerTribe.length; i++) {
+        for (int i = 0; i < smallerTribe.length && !removed; i++) {
             if ((this.arrei[i].getTribe()).equals(tribo.getTribe())) {
+                removed = true;
                 for (int j = i; j < arrei.length - 1; j++) {
                     arrei[j] = arrei[j + 1];
                 }
@@ -35,22 +38,24 @@ public class RepositoryArrayTribe implements RepositoryTribe {
             smallerTribe[i] = arrei[i];
         }
 
-        this.arrei = smallerTribe;
+        if (removed) {
+            this.arrei = smallerTribe;
+        } else {
+            throw new TriboNaoEncontradaException(tribo.getTribe());
+        }
     }
 
-    public Tribe procurar(String name) {
+    public Tribe procurar(String name) throws TriboNaoEncontradaException{
         for (int i = 0; i < this.arrei.length; i++) {
             if (name.equals(this.arrei[i].getTribe())) {
                 return this.arrei[i];
             }
         }
+        
+        throw new TriboNaoEncontradaException(name);
     }
 
-    public void atualizarLider(Viking lider) {
-        for (int i = 0; i < this.arrei.length; i++) {
-            if ((this.arrei[i].getLeader()).equals(lider.getName())) {
-                this.arrei.setLeader(lider);
-            }
-        }
+    public void atualizarLider(Viking lider) throws MesmoLiderException{
+        this.setLeader(lider);
     }
 }
