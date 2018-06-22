@@ -1,4 +1,5 @@
 package classesBasicas;
+import excecoes.*;
 
 public class Tribe {
 	
@@ -24,7 +25,11 @@ public class Tribe {
 		return this.leader.getName();
 	}
 
-	public void setLeader(Viking l) {
-		this.leader = l;
+	public void setLeader(Viking lider) throws MesmoLiderException{
+		if (this.leader.getLeader().equals(lider.getLeader())) {
+			throw new MesmoLiderException(lider.getLeader());
+		} else {
+			this.leader = lider;
+		}
 	}
 }
