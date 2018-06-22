@@ -25,12 +25,12 @@ public class RepositoryListDragon implements RepositoryDragon {
 	}
 
 	@Override
-	public Dragon search(Dragon dragon) {
-		if (this.dragon != null) {
-			if (this.dragon.getName().equals(dragon.getName())) {
+	public Dragon search(String name) {
+		if (existsName(name)) {
+			if (this.dragon.getName().equals(name)) {
 				return this.dragon;
 			} else {
-				return next.search(dragon);
+				return next.search(name);
 			}
 		} else {
 			return null; // Botar um ngc dizendo que o dragao nao existe
@@ -39,7 +39,7 @@ public class RepositoryListDragon implements RepositoryDragon {
 
 	@Override
 	public void update(Dragon dragon, String name) {
-		if (this.dragon != null) {
+		if (existsDragon(dragon)) {
 			if (this.dragon.getName().equals(dragon.getName())) {
 				this.dragon.setName(name);
 			} else {
@@ -53,7 +53,7 @@ public class RepositoryListDragon implements RepositoryDragon {
 
 	@Override
 	public void remove(Dragon dragon) {
-		if (this.dragon != null) {
+		if (existsDragon(dragon)) {
 			if (this.dragon.getName().equals(dragon.getName())) {
 				this.dragon = this.next.dragon;
 				this.next = this.next.next;
@@ -63,7 +63,30 @@ public class RepositoryListDragon implements RepositoryDragon {
 		} else {
 			// throws excecao de dragao q nao existe
 		}
-
+	}
+	
+	public boolean existsDragon(Dragon dragon) {
+		if (this.dragon != null) {
+			if (this.dragon.getName().equals(dragon.getName())) {
+				return true;
+			} else {
+				return this.next.existsDragon(dragon);
+			}
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean existsName(String name) {
+		if (this.dragon != null) {
+			if (this.dragon.getName().equals(name)) {
+				return true;
+			} else {
+				return this.next.existsName(name);
+			}
+		} else {
+			return false;
+		}
 	}
 
 }
