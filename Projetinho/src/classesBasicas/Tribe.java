@@ -4,12 +4,12 @@ import excecoes.*;
 public class Tribe {
 	
 	private String tribeName;
-	private Viking leader;
+	private Lider leader;
 	private String magic;
 	
-	public Tribe (String n, Viking w) {
-		this.tribeName = n;
-		this.leader = w;
+	public Tribe (String name, Lider leader) {
+		this.tribeName = name;
+		this.leader = leader;
 		this.magic = this.leader.getLeaderMagic();
 	}
 	
@@ -25,9 +25,9 @@ public class Tribe {
 		return this.leader.getName();
 	}
 
-	public void setLeader(Viking lider) throws MesmoLiderException{
-		if (this.leader.getLeader().equals(lider.getLeader())) {
-			throw new MesmoLiderException(lider.getLeader());
+	public void setLeader(Lider lider) throws MesmoLiderException{
+		if (this.leader.getName().equals(lider.getName())) {
+			throw new MesmoLiderException(lider.getName());
 		} else {
 			this.leader = lider;
 		}

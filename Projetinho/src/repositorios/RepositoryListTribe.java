@@ -1,6 +1,7 @@
 package repositorios;
 
 import classesBasicas.Tribe;
+import classesBasicas.Lider;
 import excecoes.*;
 import interfaces.RepositoryTribe;
 
@@ -37,9 +38,9 @@ public class RepositoryListTribe implements RepositoryTribe {
 
     public void remover (Tribe tribo) throws TriboNaoEncontradaException{
         if (this.tribo == null) {
-            throw new TriboNaoEncontradaException(tribo.getName());
+            throw new TriboNaoEncontradaException(tribo.getTribe());
         } else {
-            if (this.tribo.getName().equals(tribo.getTribe())) {
+            if (this.tribo.getTribe().equals(tribo.getTribe())) {
                 this.tribo = this.next.tribo;
                 this.next = this.next.next;
             } else {
@@ -48,7 +49,7 @@ public class RepositoryListTribe implements RepositoryTribe {
         }
     }
 
-    public void atualizarLider (String tribo, Viking lider) throws MesmoLiderException, TriboNaoEncontradaException{
+    public void atualizarLider (String tribo, Lider lider) throws MesmoLiderException, TriboNaoEncontradaException{
         procurar(tribo).setLeader(lider);
     }
 
