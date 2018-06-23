@@ -1,12 +1,11 @@
 package classesBasicas;
 
 
-public class Lider extends Viking  {
-	
+public class Leader extends Viking  {
 	private String leaderMagic;
 	private Competition niceLilFight;
 
-	Lider(String name, Tribe tribe, String magic) {
+	Leader(String name, Tribe tribe, String magic) {
 		super(name, tribe);
 		leaderMagic = magic;
 		niceLilFight = null;
@@ -23,5 +22,4 @@ public class Lider extends Viking  {
 	public void startCom(String place) {
 		niceLilFight = new Competition(place);
 	}
-
 }

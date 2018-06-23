@@ -2,7 +2,6 @@ package classesBasicas;
 
 
 public class Viking {
-	
 	private String name;
 	private Tribe tribe;
 	

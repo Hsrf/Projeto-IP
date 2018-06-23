@@ -84,7 +84,7 @@ public class RepositoryArrayDragon implements RepositoryDragon {
 		}
 	}
 
-	public boolean existsName(Dragon name) {
+	public boolean existsName (String name) {
 		boolean exists = false;
 		for (int i = 0; i < arrayDragon.length && !exists; i++) {
 			if (this.arrayDragon[i].equals(name)) {
