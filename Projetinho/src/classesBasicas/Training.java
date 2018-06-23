@@ -2,19 +2,34 @@ package classesBasicas;
 public class Training extends Activity{
 	
 	
-    public Training(String place, Dragon dragon) {
+    public Training(String place) {
         super(place);
     }
     
+    public boolean checkBonus(Dragon dragon) {
+    	if(this.getPlace().equals("Volcano Land") && dragon.getMagic().equals("Fire")) {
+    		return true;
+    	}else if(this.getPlace().equals("Sea Of The Brave") && dragon.getMagic().equals("Water")) {
+    		return true;
+    	}else if(this.getPlace().equals("Lightining Storm") && dragon.getMagic().equals("Lightining")) {
+    		return true;
+    	}else if(this.getPlace().equals("Ice Island") && dragon.getMagic().equals("Ice")) {
+    		return true;
+    	}else {
+    		return false;
+    	}
+    }
     
-  
- 
     public void crossFit(Dragon dragon) {
         int value = (int)(Math.random() * 2);
         if(value == 0) {
             this.setGotHurt(true);
             //porque CrossFit eh horrivel
             value = -5;
+        }
+        if(this.checkBonus(dragon)) {
+        	//This means the Dragon type and the Place of the Activity match
+        	value += 3;
         }
         dragon.train(value);
     }
@@ -25,6 +40,10 @@ public class Training extends Activity{
             this.setGotHurt(true);
             value = -3;
         }
+        if(this.checkBonus(dragon)) {
+        	//This means the Dragon type and the Place of the Activity match
+        	value += 3;
+        }
         dragon.train(value);
     }
  
@@ -33,6 +52,10 @@ public class Training extends Activity{
         if(value == 5) {
             this.setGotHurt(true);
             value = -3;
+        }
+        if(this.checkBonus(dragon)) {
+        	//This means the Dragon type and the Place of the Activity match
+        	value += 3;
         }
         dragon.train(value);
     }
@@ -43,6 +66,10 @@ public class Training extends Activity{
             this.setGotHurt(true);
             //porque FitDance rules
             value = -3;
+        }
+        if(this.checkBonus(dragon)) {
+        	//This means the Dragon type and the Place of the Activity match
+        	value += 3;
         }
         dragon.train(value);
     }

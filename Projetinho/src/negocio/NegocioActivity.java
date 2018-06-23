@@ -2,7 +2,7 @@ package negocio;
 
 import interfaces.RepositoryActivity;
 import repositorios.RepositoryArrayActivity;
-import repositorios.RepositoryListaActivity;
+import repositorios.RepositoryListActivity;
 
 public class NegocioActivity {
 	
@@ -13,7 +13,7 @@ public class NegocioActivity {
 		if (x/*array*/) {
 			this.repository = new RepositoryArrayActivity();
 		}else /*lista*/{
-			this.repository = new RepositoryListaActivity();
+			this.repository = new RepositoryListActivity();
 		}
 	}
 }

@@ -33,5 +33,4 @@ public abstract class Activity {
     public void setPlace(String place) {
         this.place = place;
     }
-   
 }

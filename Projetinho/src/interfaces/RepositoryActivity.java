@@ -7,4 +7,5 @@ public interface RepositoryActivity {
 	public void remove(Activity activity);
 	public Activity search(int id);
 	public void update(Activity activity, String lugar);
+	public void autoFill();
 }
