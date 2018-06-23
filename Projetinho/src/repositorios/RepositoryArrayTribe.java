@@ -58,4 +58,14 @@ public class RepositoryArrayTribe implements RepositoryTribe {
     public void atualizarLider(String tribo, Viking lider) throws MesmoLiderException, TriboNaoEncontradaException{
         procurar(tribo).setLeader(lider);
     }
+
+    public boolean existe(String tribe) {
+        for (int i = 0; i < arrei.length; i++) {
+            if (arrei[i].getTribe().equals(tribe)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

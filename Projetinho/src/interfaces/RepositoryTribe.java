@@ -7,4 +7,5 @@ public interface RepositoryTribe {
 	public Tribe procurar(String nome) throws TriboNaoEncontradaException;
 	public void atualizarLider(String tribo, Viking lider) throws MesmoLiderException, TriboNaoEncontradaException;
 	public void remover(Tribe tribo) throws TriboNaoEncontradaException;
+	public boolean existe(String nome);
 }
