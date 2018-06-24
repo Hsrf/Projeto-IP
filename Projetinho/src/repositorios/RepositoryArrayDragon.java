@@ -1,6 +1,8 @@
 package repositorios;
 
 import classesBasicas.Dragon;
+import excecoes.DragonAlreadyExistsException;
+import excecoes.DragonNotFoundException;
 import interfaces.RepositoryDragon;
 
 public class RepositoryArrayDragon implements RepositoryDragon {
@@ -22,38 +24,40 @@ public class RepositoryArrayDragon implements RepositoryDragon {
 	}
 
 	@Override
-	public Dragon search(String name) {
-		if (existsName(name)) {
+	public Dragon search(String name) throws DragonNotFoundException {
+		if (exists(name)) {
 			for (int i = 0; i < this.arrayDragon.length; i++) {
 				if (this.arrayDragon[i].getName().equals(name)) {
 					return arrayDragon[i];
 				}
 			}
 		} else {
-			return null; //mensagem falando q n existe esse dragon
+			throw new DragonNotFoundException(name);
 		}
 
 	}
 
 	@Override
-	public void update(Dragon dragon, String name) {
+	public void update(Dragon dragon, String name) throws DragonNotFoundException, DragonAlreadyExistsException {
 		boolean found = false;
-		if (existsDragon(dragon)) {
+		if (exists(dragon.getName()) && !exists(name)) {
 			for (int i = 0; i < this.arrayDragon.length && !found; i++) {
 				if (this.arrayDragon[i].getName().equals(dragon.getName())) {
 					found = true;
 					this.arrayDragon[i].setName(name);
 				}
 			}
+		} else if (!exists(dragon.getName())) {
+			throw new DragonNotFoundException(dragon.getName());
 		} else {
-			// mensagem falando que nao existe esse dragon
+			throw new DragonAlreadyExistsException(name);
 		}
 	}
 
 	@Override
-	public void remove(Dragon dragon) {
+	public void remove(Dragon dragon) throws DragonNotFoundException {
 		boolean removed = false;
-		if (existsDragon(dragon)) {
+		if (exists(dragon.getName())) {
 			Dragon[] arrayDragonSmaller = new Dragon[this.arrayDragon.length - 1];
 			for (int i = 0; i < this.arrayDragon.length; i++) {
 				if (this.arrayDragon[i].getName().equals(dragon.getName())) {
@@ -66,25 +70,11 @@ public class RepositoryArrayDragon implements RepositoryDragon {
 			}
 			this.arrayDragon = arrayDragonSmaller;
 		} else {
-			// mensae=gem falando q nao existe dragao
+			throw new DragonNotFoundException(dragon.getName());
 		}
 	}
 
-	public boolean existsDragon(Dragon dragon) {
-		boolean exists = false;
-		for (int i = 0; i < arrayDragon.length && !exists; i++) {
-			if (this.arrayDragon[i].equals(dragon.getName())) {
-				exists = true;
-			}
-		}
-		if (!exists) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	public boolean existsName (String name) {
+	public boolean exists (String name) {
 		boolean exists = false;
 		for (int i = 0; i < arrayDragon.length && !exists; i++) {
 			if (this.arrayDragon[i].equals(name)) {
@@ -96,6 +86,13 @@ public class RepositoryArrayDragon implements RepositoryDragon {
 		} else {
 			return true;
 		}
+	}
+	
+	public void autoFill() {
+		this.arrayDragon[0] = new Dragon("Blazestone", "Fire");
+		this.arrayDragon[1] = new Dragon("Splashdown", "Water");
+		this.arrayDragon[2] = new Dragon("Stormicide", "Lightning");
+		this.arrayDragon[3] = new Dragon("Frozone","Ice");
 	}
 
 }

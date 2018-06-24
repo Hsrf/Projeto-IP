@@ -5,7 +5,7 @@ public class Dragon {
     private int strength;                                                                                              
     private String magic;                                                                                              
                                                                                                                        
-    Dragon(String name, String magic) {                                                                                
+    public Dragon(String name, String magic) {                                                                                
         this.name = name;                                                                                              
         this.magic = magic;                                                                                            
         this.strength = (int) (Math.random() * 10);                                                                    

@@ -1,6 +1,8 @@
 package repositorios;
 
 import classesBasicas.Dragon;
+import excecoes.DragonAlreadyExistsException;
+import excecoes.DragonNotFoundException;
 import interfaces.RepositoryDragon;
 
 public class RepositoryListDragon implements RepositoryDragon {
@@ -25,35 +27,37 @@ public class RepositoryListDragon implements RepositoryDragon {
 	}
 
 	@Override
-	public Dragon search(String name) {
-		if (existsName(name)) {
+	public Dragon search(String name) throws DragonNotFoundException {
+		if (exists(name)) {
 			if (this.dragon.getName().equals(name)) {
 				return this.dragon;
 			} else {
 				return next.search(name);
 			}
 		} else {
-			return null; // Botar um ngc dizendo que o dragao nao existe
+			throw new DragonNotFoundException(name);
 		}
 	}
 
 	@Override
-	public void update(Dragon dragon, String name) {
-		if (existsDragon(dragon)) {
+	public void update(Dragon dragon, String name) throws DragonNotFoundException, DragonAlreadyExistsException {
+		if (exists(dragon.getName()) && !exists(name)) {
 			if (this.dragon.getName().equals(dragon.getName())) {
 				this.dragon.setName(name);
 			} else {
 				this.next.update(dragon, name);
 			}
+		} else if (!exists(dragon.getName())){
+			throw new DragonNotFoundException(name);
 		} else {
-			// throws excecao de dragao q nao existe
+			throw new DragonAlreadyExistsException(name);
 		}
 
 	}
 
 	@Override
-	public void remove(Dragon dragon) {
-		if (existsDragon(dragon)) {
+	public void remove(Dragon dragon) throws DragonNotFoundException {
+		if (exists(dragon.getName())) {
 			if (this.dragon.getName().equals(dragon.getName())) {
 				this.dragon = this.next.dragon;
 				this.next = this.next.next;
@@ -61,32 +65,31 @@ public class RepositoryListDragon implements RepositoryDragon {
 				this.next.remove(dragon);
 			}
 		} else {
-			// throws excecao de dragao q nao existe
+			throw new DragonNotFoundException(dragon.getName());
 		}
 	}
 	
-	public boolean existsDragon(Dragon dragon) {
-		if (this.dragon != null) {
-			if (this.dragon.getName().equals(dragon.getName())) {
-				return true;
-			} else {
-				return this.next.existsDragon(dragon);
-			}
-		} else {
-			return false;
-		}
-	}
-	
-	public boolean existsName(String name) {
+	public boolean exists(String name) {
 		if (this.dragon != null) {
 			if (this.dragon.getName().equals(name)) {
 				return true;
 			} else {
-				return this.next.existsName(name);
+				return this.next.exists(name);
 			}
 		} else {
 			return false;
 		}
+	}
+	
+	public void autoFill() {
+		this.dragon = new Dragon("Blazestone", "Fire");
+		this.next = new RepositoryListDragon();
+		this.next.dragon = new Dragon("Splashdown", "Water");
+		this.next.next = new RepositoryListDragon();
+		this.next.next.dragon = new Dragon("Stormicide", "Lightning");
+		this.next.next.next = new RepositoryListDragon();
+		this.next.next.next.dragon = new Dragon("Frozone","Ice");
+		this.next.next.next.next = new RepositoryListDragon();
 	}
 
 }
