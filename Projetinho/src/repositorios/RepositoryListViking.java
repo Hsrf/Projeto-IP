@@ -8,7 +8,7 @@ public class RepositoryListViking implements RepositoryViking {
 	private Viking viking;
 	private RepositoryListViking next;
 
-	RepositoryListViking() {
+	public RepositoryListViking() {
 		this.viking = null;
 		this.next = null;
 	}

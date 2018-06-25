@@ -7,7 +7,7 @@ public class RepositoryArrayViking implements RepositoryViking {
 
 	private Viking[] arrayViking;
 
-	RepositoryArrayViking() {
+	public RepositoryArrayViking() {
 		arrayViking = new Viking[0];
 	}
 

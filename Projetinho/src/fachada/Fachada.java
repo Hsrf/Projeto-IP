@@ -1,63 +1,110 @@
 package fachada;
 
-import classesBasicas.*;
 import excecoes.*;
-import interfaces.RepositoryDragon;
-import interfaces.RepositoryTribe;
+import classesBasicas.*;
+import interfaces.*;
 import negocio.*;
+import repositorios.*;
 
 public class Fachada {
-    private CadastroTribe cadastroTribo;
-    private RegisterDragon cadastroDragao;
-    // classe negocio de hugo
-    // classe negocio de luana
+    private CadastroTribe registerTribe;
+    private RegisterDragon registerDragon;
+    private RegisterActivity registerActivity;
+    private RegisterViking registerViking;
 
-    public Fachada (RepositoryTribe repositorioTribo, RepositoryDragon repositorioDragao /* hugo e luana */) {
-        this.cadastroTribo = new RepositoryTribe(repositorioTribo);
-        this.cadastroDragao = new RepositoryDragon(repositorioDragao);
-        // hugo
-        // luana
+
+    public Fachada (String type) {
+        if(type.equals("array")) {
+            //Cria os repositorios como arrays
+            RepositoryArrayTribe repoT = new RepositoryArrayTribe();
+            RepositoryArrayDragon repoD = new RepositoryArrayDragon();
+            RepositoryArrayActivity repoA = new RepositoryArrayActivity();
+            RepositoryArrayViking repoV = new RepositoryArrayViking();
+            this.registerTribe = new CadastroTribe(repoT);
+            this.registerDragon = new RegisterDragon(repoD);
+            this.registerActivity = new RegisterActivity(repoA);
+            this.registerViking = new RegisterViking(repoV);
+        }else{
+            //Cria os repositorios como Listas
+             RepositoryListTribe repoT = new RepositoryListTribe();
+             RepositoryListDragon repoD = new RepositoryListDragon();
+             RepositoryListActivity repoA = new RepositoryListActivity();
+             RepositoryListViking repoV = new RepositoryListViking();
+             this.registerTribe = new CadastroTribe(repoT);
+             this.registerDragon = new RegisterDragon(repoD);
+             this.registerActivity = new RegisterActivity(repoA);
+             this.registerViking = new RegisterViking(repoV);
+        }
     }
 
     // métodos de Tribo
-    public void cadastrarTribo(Tribe tribo) throws TriboJaCadastradaException{
-        this.cadastroTribo.cadastar(tribo);
+    public void registerTribe(Tribe tribe) throws TriboJaCadastradaException{
+        this.registerTribe.cadastar(tribe);
     }
 
-    public void removerTribo(Tribe tribo) throws TriboNaoEncontradaException{
-        this.cadastroTribo.remover(tribo);
+    public void removeTribe(Tribe tribe) throws TriboNaoEncontradaException{
+        this.registerTribe.remover(tribe);
     }
 
-    public Tribe procurarTribo(String nome) throws TriboNaoEncontradaException{
-        return this.cadastroTribo.procurar(nome);
+    public Tribe searchTribe(String name) throws TriboNaoEncontradaException{
+        return this.registerTribe.procurar(name);
     }
 
-    public void atualizarLider(String tribo, Lider lider) throws MesmoLiderException, TriboNaoEncontradaException{
-        this.cadastroTribo.atualizarLider(tribo, lider);
+    public void updateTribeLeader(String tribe, Leader leader) throws MesmoLiderException, TriboNaoEncontradaException{
+        this.registerTribe.atualizarLider(tribe, leader);
     }
 
 
     // métodos de Dragão
-    public void registrarDragao(Dragon dragon) throws DragonAlreadyExistsException{
-        this.cadastroDragao.register(dragon);
+    public void registerDragon(Dragon dragon) throws DragonAlreadyExistsException{
+        this.registerDragon.register(dragon);
     }
 
-    public void removerDragao(Dragon dragon) throws DragonNotFoundException{
-        this.cadastroDragao.remove(dragon);
+    public void removeDragon(Dragon dragon) throws DragonNotFoundException{
+        this.registerDragon.remove(dragon);
+    }
+public Dragon searchDragon(String name) throws DragonNotFoundException{
+        return this.registerDragon.search(name);
     }
 
-    public Dragon procurarDragao(String name) throws DragonNotFoundException{
-        return this.cadastroDragao.search(name);
-    }
-
-    public void atualizarDragao(Dragon dragon, String name) throws DragonAlreadyExistsException, DragonNotFoundException{
-        this.cadastroDragao.update(dragon, name);
+    public void updateDragon(Dragon dragon, String name) throws DragonAlreadyExistsException, DragonNotFoundException{
+        this.registerDragon.update(dragon, name);
     }
 
     // métodos de hugo
+    public void registerActivity(Activity activity) throws ActivityAlreadyExistsException{
+        this.registerActivity.register(activity);
+    }
 
+    public void removeActivity(Activity activity) throws ActivityNotFoundException{
+        this.registerActivity.remove(activity);
+    }
+
+    public Activity searchActivity(int id) throws ActivityNotFoundException{
+        return this.registerActivity.search(id);
+    }
+
+    public void updateActivity(Activity activity, String place) throws ActivityAlreadyExistsException, ActivityNotFoundException{
+        this.registerActivity.update(activity, place);
+    }
 
 
     // métodos de luana
     
+    public void registerViking(Viking viking) throws VikingAlreadyExistsException{
+        this.registerViking.insert(viking);
+    }
+
+    public void removeViking(Viking viking) throws VikingNotFoundException{
+        this.registerViking.remove(viking);
+    }
+
+    public Viking searchViking(String name) throws VikingNotFoundException{
+        return this.registerViking.search(name);
+    }
+
+    public void updateViking(Viking viking, String name) throws VikingAlreadyExistsException, VikingNotFoundException{
+        this.registerViking.update(viking, name);
+    }
+
 }

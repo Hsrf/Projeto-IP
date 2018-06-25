@@ -1,7 +1,7 @@
 package classesBasicas;
 
 
-public class Viking {
+public abstract class Viking  {
 	private String name;
 	private Tribe tribe;
 	

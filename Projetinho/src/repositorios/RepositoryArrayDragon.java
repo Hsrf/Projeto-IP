@@ -9,7 +9,7 @@ public class RepositoryArrayDragon implements RepositoryDragon {
 
 	private Dragon[] arrayDragon;
 
-	RepositoryArrayDragon() {
+	public RepositoryArrayDragon() {
 		arrayDragon = new Dragon[0];
 	}
 

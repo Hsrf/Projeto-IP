@@ -10,7 +10,7 @@ public class RepositoryListDragon implements RepositoryDragon {
 	private Dragon dragon;
 	private RepositoryListDragon next;
 
-	RepositoryListDragon() {
+	public RepositoryListDragon() {
 		this.dragon = null;
 		this.next = null;
 	}
