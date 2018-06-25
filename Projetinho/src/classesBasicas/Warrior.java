@@ -18,8 +18,19 @@ public class Warrior extends Viking {
 		this.dragon = dragon;
 	}
 	
-	public Training train(String place) {
-		this.training = new Training(place, this.dragon);
-		return this.training;
+	public void train(String place, int number) {
+		//o numer(que varia de 1 a 5), é o tipo de treinamento desejado
+		this.training = new Training(place);
+		if(number == 1) {
+			training.crossFit(this.dragon);
+		}else if(number == 2) {
+			training.upperBody(this.dragon);
+		}else if(number == 3) {
+			training.lowerBody(this.dragon);
+		}else if(number == 4) {
+			training.fitDance(this.dragon);
+		}else if(number == 5) {
+			training.fisiotherapy(this.dragon);
+		}
 	}
 }

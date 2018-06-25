@@ -29,10 +29,8 @@ public class RepositoryArrayViking implements RepositoryViking {
 					return arrayViking[i];
 				}
 			}
-		} else {
-			return null; //mensagem falando q n existe esse viking
 		}
-
+			return null; //mensagem falando q n existe esse viking
 	}
 
 	@Override

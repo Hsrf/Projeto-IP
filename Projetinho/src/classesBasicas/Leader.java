@@ -22,4 +22,16 @@ public class Leader extends Viking  {
 	public void startCom(String place) {
 		niceLilFight = new Competition(place);
 	}
+	
+	public void createCompetition(String place) {
+		this.niceLilFight = new Competition(place);
+	}
+	
+	public void addCompetitors(Dragon dragon) {
+		this.niceLilFight.addDragon(dragon);
+	}
+	
+	public Dragon[] startCompetition() {
+		return this.niceLilFight.compete();
+	}
 }

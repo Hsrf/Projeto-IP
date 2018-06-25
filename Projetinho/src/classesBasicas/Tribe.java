@@ -4,10 +4,10 @@ import excecoes.*;
 public class Tribe {
 	
 	private String tribeName;
-	private Lider leader;
+	private Leader leader;
 	private String magic;
 	
-	public Tribe (String name, Lider leader) {
+	public Tribe (String name, Leader leader) {
 		this.tribeName = name;
 		this.leader = leader;
 		this.magic = this.leader.getLeaderMagic();
@@ -25,7 +25,7 @@ public class Tribe {
 		return this.leader.getName();
 	}
 
-	public void setLeader(Lider lider) throws MesmoLiderException{
+	public void setLeader(Leader lider) throws MesmoLiderException{
 		if (this.leader.getName().equals(lider.getName())) {
 			throw new MesmoLiderException(lider.getName());
 		} else {

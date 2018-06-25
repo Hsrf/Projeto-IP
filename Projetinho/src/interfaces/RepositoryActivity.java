@@ -8,4 +8,6 @@ public interface RepositoryActivity {
 	public Activity search(int id);
 	public void update(Activity activity, String lugar);
 	public void autoFill();
-}
+	public boolean exists(int id);
+	}
+

@@ -1,7 +1,7 @@
 package negocio;
 
 import classesBasicas.Tribe;
-import classesBasicas.Lider;
+import classesBasicas.Leader;
 import excecoes.*;
 import interfaces.RepositoryTribe;
 
@@ -29,7 +29,7 @@ public class CadastroTribe {
         return this.tribos.procurar(name);
     }
 
-    public void atualizarLider(String tribo, Lider lider) throws MesmoLiderException, TriboNaoEncontradaException{
+    public void atualizarLider(String tribo, Leader lider) throws MesmoLiderException, TriboNaoEncontradaException{
         this.tribos.atualizarLider(tribo, lider);
     }
 }

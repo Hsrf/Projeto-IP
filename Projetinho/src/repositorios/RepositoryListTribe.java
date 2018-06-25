@@ -1,7 +1,7 @@
 package repositorios;
 
 import classesBasicas.Tribe;
-import classesBasicas.Lider;
+import classesBasicas.Leader;
 import excecoes.*;
 import interfaces.RepositoryTribe;
 
@@ -49,7 +49,7 @@ public class RepositoryListTribe implements RepositoryTribe {
         }
     }
 
-    public void atualizarLider (String tribo, Lider lider) throws MesmoLiderException, TriboNaoEncontradaException{
+    public void atualizarLider (String tribo, Leader lider) throws MesmoLiderException, TriboNaoEncontradaException{
         procurar(tribo).setLeader(lider);
     }
 

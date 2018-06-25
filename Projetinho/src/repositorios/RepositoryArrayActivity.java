@@ -82,4 +82,15 @@ public class RepositoryArrayActivity implements RepositoryActivity{
 		this.array[8] = new Competition("CIn");
 		this.array[9] = new Training("CIn");
 	}
+
+	@Override
+	public boolean exists(int id) {
+	for(int i = 0; i < this.array.length; i++) {
+		if(array[i].getId() == id) {
+			return true;
+		}
+	}
+		return false;
+	}
+
 }

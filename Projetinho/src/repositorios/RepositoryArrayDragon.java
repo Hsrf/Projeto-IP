@@ -24,20 +24,6 @@ public class RepositoryArrayDragon implements RepositoryDragon {
 	}
 
 	@Override
-	public Dragon search(String name) throws DragonNotFoundException {
-		if (exists(name)) {
-			for (int i = 0; i < this.arrayDragon.length; i++) {
-				if (this.arrayDragon[i].getName().equals(name)) {
-					return arrayDragon[i];
-				}
-			}
-		} else {
-			throw new DragonNotFoundException(name);
-		}
-
-	}
-
-	@Override
 	public void update(Dragon dragon, String name) throws DragonNotFoundException, DragonAlreadyExistsException {
 		boolean found = false;
 		if (exists(dragon.getName()) && !exists(name)) {
@@ -92,7 +78,19 @@ public class RepositoryArrayDragon implements RepositoryDragon {
 		this.arrayDragon[0] = new Dragon("Blazestone", "Fire");
 		this.arrayDragon[1] = new Dragon("Splashdown", "Water");
 		this.arrayDragon[2] = new Dragon("Stormicide", "Lightning");
-		this.arrayDragon[3] = new Dragon("Frozone","Ice");
+		this.arrayDragon[3] = new Dragon("Frozone", "Ice");
+	}
+
+	@Override
+	public Dragon search(String name) throws DragonNotFoundException {
+		if(exists(name)) {
+			for(int i = 0; i < this.arrayDragon.length; i++) {
+				if(this.arrayDragon[i].getName().equals(name)) {
+					return arrayDragon[i];
+				}
+			}
+		}
+		throw new DragonNotFoundException(name);
 	}
 
 }

@@ -71,4 +71,19 @@ public class RepositoryListActivity implements RepositoryActivity{
 		this.inserir(new Competition("CIn"));
 		this.inserir(new Training("CIn"));
 	}
+
+	@Override
+	public boolean exists(int id) {
+		if(this.activity != null) {
+			if(this.activity.getId() == id) {
+				return true;
+			}else {
+				return this.next.exists(id);
+			}
+		}else {
+			return false;
+		}
+		
+	}
+
 }
