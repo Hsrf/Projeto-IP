@@ -15,3 +15,4 @@ Qual bumbum mais bate? Qual bumbum mais pula? - Gabi
 Eu deveria estar estudando para cálculo sim ou claro? - Hugo
 Claro - Gabi
 Saudades amigos - Gabi
+N acredito - Funkeira
